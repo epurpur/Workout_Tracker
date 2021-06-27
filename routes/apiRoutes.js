@@ -15,6 +15,7 @@ router.get('/api/allWorkouts', (req, res) => {
 });
 
 // create a workout
+// This creates a new record with only an ID and Date, but no exercises yet
 router.post('/api/workouts', (req, res) => {
     Workout.create({})
     .then(workout => {
@@ -26,9 +27,21 @@ router.post('/api/workouts', (req, res) => {
     });
 });
 
+
+// Update a workout
+// This updates an existing workout's exercises
+// Workout is found by it's ID
+router.put('/api/workouts/:id', ({body, params}, res) => {
+    console.log({body});
+    Workout.findByIdAndUpdate(
+        params.id,
+        {$push: {exercises:}}
+    )
+})
+
 // delete a workout
 router.delete('/api/workouts/delete', ({body}, res) => {
-    Workout.findByIdAndDelete(body.id)
+    Workout.findByIdAndRemove(body.id)
     .then (() => {
         res.json(true)
     })
