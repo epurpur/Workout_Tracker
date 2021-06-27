@@ -35,9 +35,16 @@ router.put('/api/workouts/:id', ({body, params}, res) => {
     console.log({body});
     Workout.findByIdAndUpdate(
         params.id,
-        {$push: {exercises:}}
+        {$push: {exercises: body}},
+        {new: true, runValidators: true}
     )
-})
+    .then(dbWorkout => {
+        res.json(dbWorkout)
+    })
+    .catch(err => {
+        res.json(err);
+    })
+});
 
 // delete a workout
 router.delete('/api/workouts/delete', ({body}, res) => {
