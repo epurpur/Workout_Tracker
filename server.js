@@ -5,19 +5,18 @@ const mongoose = require('mongoose');
 const compression = require('compression');
 
 
-// Set up and connect to MongoDB with Mongoose extension. 
-// Database is called 'workout'
-// Database schema is in /models directory
+// Setup Mongo database and Schema. Database is called 'workout'
+// Running Mongoose on top of Mongo to create DB Schema
 const db = require('./models');
 
 mongoose.connect(
     process.env.MONGODB_URI || 'mongodb://localhost/workout' , 
-    { 
+    {   
      useNewUrlParser: true,
      useUnifiedTopology: true,
      useCreateIndex: true,
      useFindAndModify: false
-});
+    });
 
 
 // Setup Express server
@@ -34,11 +33,11 @@ app.use(compression());
 
 
 // Routes
-// app.use(require('./routes/api.js'));
-// app.use(require('./routes/view.js'));
+app.use(require('./routes/apiRoutes.js'));
+app.use(require('./routes/htmlRoutes.js'));
 
 
-
+// Run server
 app.listen(PORT, () =>{
-    console.log(`App running on port ${PORT}!`);
+    console.log(`Workout Tracker app running on port ${PORT}!`);
 });
