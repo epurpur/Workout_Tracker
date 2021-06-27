@@ -1,27 +1,23 @@
-// Dependencies
-const express = require("express");
-const logger = require("morgan");
-const mongoose = require("mongoose");
-const compression = require("compression")
+const express = require('express');
+const logger = require('morgan');
+const mongoose = require('mongoose');
+const compression = require('compression');
 
 
-// Port
 const PORT = process.env.PORT || 3000;
 
-// Initalize Express
+const db = require('./models');
+
 const app = express();
 
-// Require models folder for the database
-const db = require("./models");
-
-// Middleware
-app.use(logger("dev"));
+app.use(logger('dev'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
 app.use(compression());
 
-// Connect to DB with Mongoose
+// Connect to MongoDB with Mongoose extension. 
+// Database is called 'workout'
 mongoose.connect(
     process.env.MONGODB_URI || 'mongodb://localhost/workout' , 
     { 
@@ -32,10 +28,12 @@ mongoose.connect(
 });
 
 
-// Routes
-// app.use(require('./routes'));
+//routes
+// app.use(require('./routes/api.js'));
+// app.use(require('./routes/view.js'));
 
-// Start server
-app.listen(PORT, () => {
+
+
+app.listen(PORT, () =>{
     console.log(`App running on port ${PORT}!`);
-  });
+});
