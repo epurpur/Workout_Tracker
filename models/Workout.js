@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema
+const Schema = mongoose.Schema;
 
 
 // WorkoutSchema will have a date and an array of exercise information including: 
@@ -10,7 +10,7 @@ const WorkoutSchema = new Schema({
 
     day: {
         type: Date,
-        default: () => new Date()
+        default: Date.now
     },
     exercises: [{
         name: {
