@@ -1,11 +1,13 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema
 
-//name, type, weight, sets, reps, and duration of exercise. 
+
+// WorkoutSchema will have a date and an array of exercise information including: 
+// name, type, weight, sets, reps, and duration of exercise. 
 // If the exercise is a cardio exercise, I should be able to track my distance traveled.
 
-
 const WorkoutSchema = new Schema({
+
     day: {
         type: Date,
         default: () => new Date()
