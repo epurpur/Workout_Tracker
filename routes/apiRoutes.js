@@ -43,7 +43,22 @@ router.put('/api/workouts/:id', ({body, params}, res) => {
     })
     .catch(err => {
         res.json(err);
+    });
+});
+
+
+// Get most recent workout
+router.get('/api/workouts/mostRecent', (req, res) => {
+    Workout.find()
+    .sort({ _id: -1 })       // sort in reverse chronological order
+    .limit(1)                // limit results to just the most recent result
+    .then(dbWorkout => {
+        console.log("Most recent workout", dbWorkout);
+        res.json(dbWorkout);
     })
+    .catch(err => {
+        res.json(err);
+    });
 });
 
 
@@ -67,8 +82,8 @@ router.get('/api/workouts/range', (req, res) => {
     })
     .catch(err => {
         res.json(err);
-    })
-})
+    });
+});
 
 
 // delete a workout
@@ -80,7 +95,7 @@ router.delete('/api/workouts/delete', ({body}, res) => {
     .catch(err => {
         res.json(err);
     });
-})
+});
 
 
 module.exports = router;
