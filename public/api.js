@@ -1,3 +1,4 @@
+// fetch route: /api/workouts
 const API = {
   async getLastWorkout() {
     let res;
