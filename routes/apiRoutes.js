@@ -48,18 +48,20 @@ router.put('/api/workouts/:id', ({body, params}, res) => {
 
 
 // Get most recent workout
-router.get('/api/workouts', (req, res) => {
+router.get('/api/workouts', (req, res) =>{
     Workout.find()
-    .sort({ _id: -1 })       // sort in reverse chronological order
-    .limit(1)                // limit results to just the most recent result
     .then(dbWorkout => {
-        console.log("Most recent workout", dbWorkout);
-        res.json(dbWorkout);
-    })
-    .catch(err => {
-        res.json(err);
-    });
-});
+        const updatedData = dbWorkout.map(workout=>{
+            const totalDuration = workout.exercises.reduce((acc, curr) => acc+curr.duration, 0)        
+        return {day: workout.day, exercises: workout.exercises, totalDuration, _id: workout._id}
+        })
+        console.log('Updated Data', updatedData);
+            res.json(updatedData);
+     })
+     .catch(err => {
+         res.json(err);
+     })
+ })
 
 
 // Get last 7 workouts
@@ -78,6 +80,7 @@ router.get('/api/workouts/range', (req, res) => {
     .limit(7)
     .then(dbWorkout => {
         console.log("Last 7 workouts", dbWorkout);
+        console.log('COUNT', dbWorkout.count());
         res.json(dbWorkout);
     })
     .catch(err => {
