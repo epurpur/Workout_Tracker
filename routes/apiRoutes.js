@@ -46,6 +46,30 @@ router.put('/api/workouts/:id', ({body, params}, res) => {
     })
 });
 
+
+// Get last 7 workouts
+router.get('/api/workouts/range', (req, res) => {
+    Workout.aggregate([
+        {
+            $addFields: {
+                totalDuration: {
+                    $sum: '$exercises.duration'
+                }
+            }
+        }
+    ])
+    .sort({ _id: -1 })
+    .limit(7)
+    .then(dbWorkout => {
+        console.log("Last 7 workouts", dbWorkout);
+        res.json(dbWorkout);
+    })
+    .catch(err => {
+        res.json(err);
+    })
+})
+
+
 // delete a workout
 router.delete('/api/workouts/delete', ({body}, res) => {
     Workout.findByIdAndRemove(body.id)
