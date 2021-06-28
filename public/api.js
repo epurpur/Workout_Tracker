@@ -3,7 +3,7 @@ const API = {
   async getLastWorkout() {
     let res;
     try {
-      res = await fetch("/api/workouts/mostRecent");
+      res = await fetch("/api/workouts");  // default method is "GET"
     } catch (err) {
       console.log(err)
     }

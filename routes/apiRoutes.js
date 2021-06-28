@@ -48,7 +48,7 @@ router.put('/api/workouts/:id', ({body, params}, res) => {
 
 
 // Get most recent workout
-router.get('/api/workouts/mostRecent', (req, res) => {
+router.get('/api/workouts', (req, res) => {
     Workout.find()
     .sort({ _id: -1 })       // sort in reverse chronological order
     .limit(1)                // limit results to just the most recent result
