@@ -80,7 +80,6 @@ router.get('/api/workouts/range', (req, res) => {
     .limit(7)
     .then(dbWorkout => {
         console.log("Last 7 workouts", dbWorkout);
-        console.log('COUNT', dbWorkout.count());
         res.json(dbWorkout);
     })
     .catch(err => {
