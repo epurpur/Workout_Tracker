@@ -9,6 +9,7 @@ const compression = require('compression');
 // Running Mongoose on top of Mongo to create DB Schema
 const db = require('./models');
 
+
 mongoose.connect(
     process.env.MONGODB_URI || 'mongodb://localhost/workout' , 
     {   
