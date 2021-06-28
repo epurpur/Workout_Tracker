@@ -48,6 +48,7 @@ router.put('/api/workouts/:id', ({body, params}, res) => {
 
 
 // Get last 7 workouts
+// Workouts are sorted in chronological order
 router.get('/api/workouts/range', (req, res) => {
     Workout.aggregate([
         {
