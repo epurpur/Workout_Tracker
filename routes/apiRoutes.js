@@ -58,7 +58,7 @@ router.get('/api/workouts/range', (req, res) => {
             }
         }
     ])
-    .sort({ _id: -1 })
+    .sort({ _id: 1 })
     .limit(7)
     .then(dbWorkout => {
         console.log("Last 7 workouts", dbWorkout);
