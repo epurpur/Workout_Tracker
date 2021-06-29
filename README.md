@@ -36,7 +36,14 @@
 
     npm i  
 
+  ## Preview of Application
+  
+  ![](./images/Preview1.png)
+  
+  ![](./images/Preview2.png)
+
   ## Questions 
 
   For issues, questions, and comments please contact epurpur@gmail.com or visit [https://github.com/epurpur](https://github.com/epurpur) 
   
+
