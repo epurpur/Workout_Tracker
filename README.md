@@ -2,6 +2,14 @@
   # Project Name:
 
   Workout Tracker
+  
+  ## Deployed Application: 
+  
+  [https://serene-savannah-59687.herokuapp.com/](https://serene-savannah-59687.herokuapp.com/)
+  
+  ## Github Repo
+  
+  [https://github.com/epurpur/Workout_Tracker](https://github.com/epurpur/Workout_Tracker)
 
   ## License
 
@@ -26,19 +34,7 @@
 
   Navigate to the root directory of this repository and run the following commands to install necessary dependencies:
 
-    npm i
-
-  ## Usage
-
-  
-
-  ## Contributions 
-
-  
-
-  ## Tests 
-
-  
+    npm i  
 
   ## Questions 
 
